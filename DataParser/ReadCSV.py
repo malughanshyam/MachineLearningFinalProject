@@ -9,7 +9,6 @@ Created on Sep 18 , 2015
 import csv, sys
 import os, Dataset
 
-
 def readFileAsVector(csvFileName):
     ''' 
     Reads a data in CSV file and returns a vector dataset
