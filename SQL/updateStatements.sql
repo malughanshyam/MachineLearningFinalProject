@@ -542,3 +542,142 @@ UPDATE `carvana`.test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized as A
  INNER JOIN ( SELECT RefID from `carvana`.test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30 WHERE WarrantyCost > 1412) AS B
  ON A.RefID = B.RefID 
 SET  A.WarrantyCost = '>1412';
+
+
+
+
+/*============
+Update TRANSMISSION
+*/
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  TRANSMISSION = 0
+WHERE TRANSMISSION = 'AUTO';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  TRANSMISSION = 1
+WHERE TRANSMISSION = 'MANUAL';
+
+/*============
+Update WheelType
+*/
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  WheelType = 0
+WHERE WheelType = 'Alloy';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  WheelType = 1
+WHERE WheelType = 'Covers';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  WheelType = 2
+WHERE WheelType = 'Special';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  WheelType = 3
+WHERE WheelType = 'Other';
+
+
+/*============
+Update Auction
+*/
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Auction = 0
+WHERE Auction = 'ADESA';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Auction = 1
+WHERE Auction = 'MANHEIM';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Auction = 2
+WHERE Auction = 'OTHER';
+
+/*============
+Update Size
+*/
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Size = 0
+WHERE Size = 'SMALL';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Size = 1
+WHERE Size = 'MEDIUM';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Size = 2
+WHERE Size = 'LARGE';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  Size = 3
+WHERE Size = 'SPECIAL';
+
+
+/*============
+Update TopThreeAmericanName
+*/
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  TopThreeAmericanName = 0
+WHERE TopThreeAmericanName = 'GM';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  TopThreeAmericanName = 1
+WHERE TopThreeAmericanName = 'FORD';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  TopThreeAmericanName = 2
+WHERE TopThreeAmericanName = 'CHRYSLER';
+
+UPDATE `carvana`.training_exluding_f1_5_8_9_10_11_13_27_28_30_disc2 
+SET  TopThreeAmericanName = 3
+WHERE TopThreeAmericanName = 'OTHER';
+
+
+
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  Nationality = 'ASIAN'
+WHERE Nationality in ('OTHER ASIAN', 'TOP LINE ASIAN');
+
+
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRAcquisitionAuctionAveragePrice = 6127.40
+WHERE MMRAcquisitionAuctionAveragePrice  in (0,1);
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRAcquisitionAuctionCleanPrice = 7371.82
+WHERE MMRAcquisitionAuctionCleanPrice  in (0,1) ;
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRAcquisitionRetailAveragePrice = 8494.94
+WHERE MMRAcquisitionRetailAveragePrice in (0,1) ;
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRAcquisitonRetailCleanPrice = 9848.50
+WHERE MMRAcquisitonRetailCleanPrice  in (0,1);
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRCurrentAuctionAveragePrice = 6105.61
+WHERE MMRCurrentAuctionAveragePrice  in (0,1) ;
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRCurrentAuctionCleanPrice = 7358.78
+WHERE MMRCurrentAuctionCleanPrice  in (0,1);
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRCurrentRetailAveragePrice = 8737.85
+WHERE MMRCurrentRetailAveragePrice in (0,1);
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  MMRCurrentRetailCleanPrice = 10101.60
+WHERE MMRCurrentRetailCleanPrice in (0,1) ;
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  VehBCost = 6730.93
+WHERE VehBCost  in (0,1) ;
+
+UPDATE `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+SET  WarrantyCost = 1276.58
+WHERE WarrantyCost in (0,1) ;
+
+

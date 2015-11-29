@@ -19,6 +19,15 @@ IGNORE 1 LINES
 (RefId,@date_time_variable,Auction,VehYear,VehicleAge,Make,Model,Trim,SubModel,Color,Transmission,WheelTypeID,WheelType,VehOdo,Nationality,Size,TopThreeAmericanName,MMRAcquisitionAuctionAveragePrice,MMRAcquisitionAuctionCleanPrice,MMRAcquisitionRetailAveragePrice,MMRAcquisitonRetailCleanPrice,MMRCurrentAuctionAveragePrice,MMRCurrentAuctionCleanPrice,MMRCurrentRetailAveragePrice,MMRCurrentRetailCleanPrice,PRIMEUNIT,AUCGUART,BYRNO,VNZIP1,VNST,VehBCost,IsOnlineSale,WarrantyCost)
 SET PurchDate = STR_TO_DATE(@date_time_variable, '%m/%d/%Y');
 
+/*Test test_refid_isbadbuy_mapping */
+LOAD DATA LOCAL INFILE 'C:/Users/gmalu/Documents/GitHub/MachineLearningFinalProject/Dataset/test/example_entry.csv' 
+INTO TABLE carvana.test_refid_isbadbuy_mapping 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES 
+(RefId,IsBadBuy);
+
+
 /* Load training_raw_with_MM_YYYY*/
 /*export*/
 SELECT `training_raw`.`RefID`,
@@ -233,4 +242,56 @@ IGNORE 1 LINES
 SET PurchDate = STR_TO_DATE(@date_time_variable, '%Y-%m-%d');
 
 
+SELECT `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`RefID`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`PurchDate`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`PurchMonth`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`PurchYear`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`Auction`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`VehicleAge`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`Make`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`Transmission`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`WheelType`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`VehOdo`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`Nationality`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`Size`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`TopThreeAmericanName`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRAcquisitionAuctionAveragePrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRAcquisitionAuctionCleanPrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRAcquisitionRetailAveragePrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRAcquisitonRetailCleanPrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRCurrentAuctionAveragePrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRCurrentAuctionCleanPrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRCurrentRetailAveragePrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`MMRCurrentRetailCleanPrice`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`BYRNO`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`VNST`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`VehBCost`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`IsOnlineSale`,
+    `test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`.`WarrantyCost`,
+    B.IsBadBuy
+FROM `carvana`.`test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized`
+INNER JOIN carvana.test_refid_isbadbuy_mapping as B
+ON (test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_discretized.RefID = B.RefID)
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_dis_with_isbadbuy.csv'
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
 
+
+/* Add the header row in the test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30.csv
+RefId,PurchDate,PurchMonth,PurchYear,Auction,VehicleAge,Make,Transmission,WheelType,VehOdo,Nationality,Size,TopThreeAmericanName,MMRAcquisitionAuctionAveragePrice,MMRAcquisitionAuctionCleanPrice,MMRAcquisitionRetailAveragePrice,MMRAcquisitonRetailCleanPrice,MMRCurrentAuctionAveragePrice,MMRCurrentAuctionCleanPrice,MMRCurrentRetailAveragePrice,MMRCurrentRetailCleanPrice,BYRNO,VNST,VehBCost,IsOnlineSale,WarrantyCost,IsBadBuy
+*/
+
+/*Import*/
+LOAD DATA LOCAL INFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_dis_with_isbadbuy.csv' 
+INTO TABLE carvana.test_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30_dis_with_isbadbuy 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES 
+(RefId,@date_time_variable,PurchMonth,PurchYear,Auction,VehicleAge,Make,Transmission,WheelType,VehOdo,Nationality,Size,TopThreeAmericanName,MMRAcquisitionAuctionAveragePrice,MMRAcquisitionAuctionCleanPrice,MMRAcquisitionRetailAveragePrice,MMRAcquisitonRetailCleanPrice,MMRCurrentAuctionAveragePrice,MMRCurrentAuctionCleanPrice,MMRCurrentRetailAveragePrice,MMRCurrentRetailCleanPrice,BYRNO,VNST,VehBCost,IsOnlineSale,WarrantyCost)
+SET PurchDate = STR_TO_DATE(@date_time_variable, '%Y-%m-%d');
+
+
+SELECT * FROM `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30 
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30.csv'
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
