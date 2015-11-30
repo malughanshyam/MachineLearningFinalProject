@@ -32,13 +32,6 @@ def balanceData(vector):
         vector.append(kickedCars[randNum])
     
     return vector       
-  
-def writeCSVFile(csvFileName,data):
-    with open(csvFileName, 'wb') as csvfile:
-        csvWriter = csv.writer(csvfile)
-        for row in data:
-            csvWriter.writerow(row)
-  
 
 if __name__ == '__main__':
     datasetDir = os.path.join(os.pardir,'Dataset','main')
