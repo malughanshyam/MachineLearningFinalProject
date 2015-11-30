@@ -361,8 +361,7 @@ SELECT `training_dataset_2`.`Auction`,
     `training_dataset_2`.`VehBCost`,
     `training_dataset_2`.`IsOnlineSale`,
     `training_dataset_2`.`WarrantyCost`,
-    `training_dataset_2`.`IsBadBuy`,
-    `training_dataset_2`.`id`
+    `training_dataset_2`.`IsBadBuy`
 FROM `carvana`.`training_dataset_2`
 INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/training_dataset_2_unbalanced_discretized.csv'
 FIELDS TERMINATED BY ','
