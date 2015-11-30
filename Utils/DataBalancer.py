@@ -28,7 +28,7 @@ def balanceData(vector):
         vector.append(row)
     
     for i in range(0, 6767):
-        randNum = random.randrange(0, len(kickedCars))
+        randNum = random.randrange(1, len(kickedCars))
         vector.append(kickedCars[randNum])
     
     return vector       
