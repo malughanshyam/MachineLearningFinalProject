@@ -4,7 +4,7 @@ Created on Nov 29, 2015
 @author: NiharKhetan
 '''
 from sklearn import preprocessing
-from DataParser.ReadCSV import *
+from DataParser.CSVHandler import *
 
 if __name__ == '__main__':
     

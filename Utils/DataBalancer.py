@@ -4,7 +4,7 @@ Created on Nov 29, 2015
 @author: NiharKhetan
 '''
 import random
-from DataParser.ReadCSV import *
+from DataParser.CSVHandler import *
 
 def convertStringToNumeric(vector):
     for i in range(0,len(vector)):
