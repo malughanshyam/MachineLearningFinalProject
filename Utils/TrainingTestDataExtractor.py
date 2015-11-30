@@ -65,7 +65,7 @@ if __name__ == '__main__':
         elif '_unbalanced' in dataset.lower():
             unBalancedDatasets.append(dataset)
             
-    
+    # Balanced dataset
     for dataset in balancedDatasets:
         datasetVector = readFileAsVector(os.path.join(datasetDir,dataset))
         print
@@ -81,4 +81,20 @@ if __name__ == '__main__':
         
         print
         print "-"*40
+        
+    # UnBalanced dataset
+    for dataset in unBalancedDatasets:
+        datasetVector = readFileAsVector(os.path.join(datasetDir,dataset))
         print
+        print "Extracting", str(trainingDataPercent*100) +'%', "Train dataset for", dataset
+        trainData = extractRows(datasetVector,trainingRowNumUnBalanced)
+        trainDataFileName = os.path.join(trainDataDir,'train_'+ dataset)
+        writeCSVFile(trainDataFileName, trainData)
+
+        print "Extracting ", str((1-trainingDataPercent)*100) +'%', "Test dataset for", dataset
+        testData = extractRows(datasetVector,testRowNumUnBalanced)
+        testDataFileName = os.path.join(testDataDir,'test_'+ dataset)
+        writeCSVFile(testDataFileName, testData)        
+        
+        print
+        print "-"*40
