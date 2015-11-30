@@ -329,3 +329,23 @@ SELECT
     `training_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30`.`WarrantyCost`,
     `training_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30`.`IsBadBuy`
 FROM `carvana`.`training_exluding_f5_f8_f9_f10_f11_f13_f27_f28_f30`;
+
+
+CREATE TABLE training_dataset_1 AS 
+SELECT *
+FROM `carvana`.`training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30`
+WHERE 1=2;
+
+CREATE TABLE training_dataset_2 AS 
+SELECT *
+FROM `carvana`.`training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30`
+WHERE 1=1;
+
+CREATE TABLE training_dataset_2_bkp AS
+SELECT * FROM training_dataset_2;
+
+ALTER TABLE `training_dataset_1_bkp` ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT, ADD primary KEY Id(Id) ;
+ALTER TABLE `training_dataset_1` ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT, ADD primary KEY Id(Id) ;
+ALTER TABLE `training_dataset_2_bkp` ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT, ADD primary KEY Id(Id) ;
+ALTER TABLE `training_dataset_2` ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT, ADD primary KEY Id(Id) ;
+

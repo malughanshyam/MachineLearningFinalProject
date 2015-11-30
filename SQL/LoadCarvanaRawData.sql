@@ -295,3 +295,75 @@ SELECT * FROM `carvana`.training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30
 INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30.csv'
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n';
+
+
+/*training_dataset_1*/
+/*Import*/
+LOAD DATA LOCAL INFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/training_balanced.csv' 
+INTO TABLE carvana.training_dataset_1 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES 
+(Auction,VehicleAge,Make,Transmission,WheelType,VehOdo,Nationality,Size,TopThreeAmericanName,MMRAcquisitionAuctionAveragePrice,MMRAcquisitionAuctionCleanPrice,MMRAcquisitionRetailAveragePrice,MMRAcquisitonRetailCleanPrice,MMRCurrentAuctionAveragePrice,MMRCurrentAuctionCleanPrice,MMRCurrentRetailAveragePrice,MMRCurrentRetailCleanPrice,VNST,VehBCost,IsOnlineSale,WarrantyCost,IsBadBuy);
+
+CREATE TABLE training_dataset_2 AS 
+SELECT *
+FROM `carvana`.`training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30`
+WHERE 1=1;
+
+/* training_dataset_1_balanced_discretized */
+SELECT `training_dataset_1`.`Auction`,
+    `training_dataset_1`.`VehicleAge`,
+    `training_dataset_1`.`Make`,
+    `training_dataset_1`.`Transmission`,
+    `training_dataset_1`.`WheelType`,
+    `training_dataset_1`.`VehOdo`,
+    `training_dataset_1`.`Nationality`,
+    `training_dataset_1`.`Size`,
+    `training_dataset_1`.`TopThreeAmericanName`,
+    `training_dataset_1`.`MMRAcquisitionAuctionAveragePrice`,
+    `training_dataset_1`.`MMRAcquisitionAuctionCleanPrice`,
+    `training_dataset_1`.`MMRAcquisitionRetailAveragePrice`,
+    `training_dataset_1`.`MMRAcquisitonRetailCleanPrice`,
+    `training_dataset_1`.`MMRCurrentAuctionAveragePrice`,
+    `training_dataset_1`.`MMRCurrentAuctionCleanPrice`,
+    `training_dataset_1`.`MMRCurrentRetailAveragePrice`,
+    `training_dataset_1`.`MMRCurrentRetailCleanPrice`,
+    `training_dataset_1`.`VNST`,
+    `training_dataset_1`.`VehBCost`,
+    `training_dataset_1`.`IsOnlineSale`,
+    `training_dataset_1`.`WarrantyCost`,
+    `training_dataset_1`.`IsBadBuy`
+FROM `carvana`.`training_dataset_1`
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/training_dataset_1_balanced_discretized.csv'
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+/* training_dataset_2_unbalanced_discretized */
+SELECT `training_dataset_2`.`Auction`,
+    `training_dataset_2`.`VehicleAge`,
+    `training_dataset_2`.`Make`,
+    `training_dataset_2`.`Transmission`,
+    `training_dataset_2`.`WheelType`,
+    `training_dataset_2`.`VehOdo`,
+    `training_dataset_2`.`Nationality`,
+    `training_dataset_2`.`Size`,
+    `training_dataset_2`.`TopThreeAmericanName`,
+    `training_dataset_2`.`MMRAcquisitionAuctionAveragePrice`,
+    `training_dataset_2`.`MMRAcquisitionAuctionCleanPrice`,
+    `training_dataset_2`.`MMRAcquisitionRetailAveragePrice`,
+    `training_dataset_2`.`MMRAcquisitonRetailCleanPrice`,
+    `training_dataset_2`.`MMRCurrentAuctionAveragePrice`,
+    `training_dataset_2`.`MMRCurrentAuctionCleanPrice`,
+    `training_dataset_2`.`MMRCurrentRetailAveragePrice`,
+    `training_dataset_2`.`MMRCurrentRetailCleanPrice`,
+    `training_dataset_2`.`VNST`,
+    `training_dataset_2`.`VehBCost`,
+    `training_dataset_2`.`IsOnlineSale`,
+    `training_dataset_2`.`WarrantyCost`,
+    `training_dataset_2`.`IsBadBuy`,
+    `training_dataset_2`.`id`
+FROM `carvana`.`training_dataset_2`
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 5.6/Uploads/training_dataset_2_unbalanced_discretized.csv'
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
