@@ -41,10 +41,10 @@ def writeCSVFile(csvFileName,data):
   
 
 if __name__ == '__main__':
-    trainingDir = os.path.join(os.pardir,'Dataset','training')
-    balancedDataFile = os.path.join(trainingDir,'training_balanced.csv')
-    trainingData = "training/training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30.csv"
-    vector = readFileAsVector(trainingData)
+    datasetDir = os.path.join(os.pardir,'Dataset','main')
+    balancedDataFile = os.path.join(datasetDir,'dataset_0_balanced.csv')
+    rawData = "main/raw/training_exluding_f1_2_3_5_8_9_10_11_13_27_28_29_30.csv"
+    vector = readFileAsVector(rawData)
     #vector = convertStringToNumeric(vector)
     balancedDataVector = balanceData(vector)
     writeCSVFile(balancedDataFile, balancedDataVector)
