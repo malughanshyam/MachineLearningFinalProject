@@ -18,13 +18,17 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import roc_auc_score
 from sklearn.feature_selection import RFE
 from sklearn.svm import SVR
- 
+from sklearn.datasets import make_friedman1
+
 if __name__ == '__main__':
+    
+    
     fileName = 'main/dataset_4_unbalanced_normalized.csv'
     csvFileName = os.path.join(Dataset.__path__[0], fileName)
     df = pd.read_csv(csvFileName)
     df = MultiColumnLabelEncoder(columns = ['Auction','Make','Transmission','WheelType','Nationality','Size','TopThreeAmericanName','VNST']).fit_transform(df)
     
+    print df
     df.apply(LabelEncoder().fit_transform)
     
     target = df['IsBadBuy']
@@ -38,17 +42,18 @@ if __name__ == '__main__':
     
     estimator = SVR(kernel="linear")
     #going with default None where half features are selected
-    selector = RFE(estimator, 5, step=1)
+    selector = RFE(estimator, 6, step=1)
     selector = selector.fit(X_train, y_train)
     print selector.support_
     print selector.ranking_
-    '''
-    Y_predicted = builtModel.predict(X_test)
-    y_score = svm.fit(X_train, y_train).decision_function(X_test)
+    
+    #Y_predicted = builtModel.predict(X_test)
+    #y_score = svm.fit(X_train, y_train).decision_function(X_test)
 
-    print "Accuracy :: ", accuracy_score(y_test, Y_predicted)
-    print "Precision :: ", precision_score(y_test, Y_predicted)
-    print "Recall :: ", recall_score(y_test, Y_predicted)
-    print "F1 Score :: ", f1_score(y_test, Y_predicted)
-    print "AUC Score:: ", roc_auc_score(y_test, y_score)
-    '''
+    #print "Accuracy :: ", accuracy_score(y_test, Y_predicted)
+    #print "Precision :: ", precision_score(y_test, Y_predicted)
+    #print "Recall :: ", recall_score(y_test, Y_predicted)
+    #print "F1 Score :: ", f1_score(y_test, Y_predicted)
+    #print "AUC Score:: ", roc_auc_score(y_test, y_score)
+    
+   
